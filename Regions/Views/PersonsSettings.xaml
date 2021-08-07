@@ -1,0 +1,72 @@
+﻿<UserControl x:Class="Regions.Views.PersonsSettings"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://prismlibrary.com/"             
+             prism:ViewModelLocator.AutoWireViewModel="True">
+
+
+
+
+    <Grid Grid.Row="0" VerticalAlignment="Stretch"  >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <Button Content="Nowy" Height="45" Width="120" Command="{Binding NewPersonCommand}"/>
+            <Button Content="Usuń" Height="45" Width="120" Command="{Binding DeletePersonCommand}"/>
+            <Button Content="Zapisz" Height="45" Width="120" Command="{Binding SavePersonsCommand}"/>
+            </StackPanel>
+            <Grid Grid.Row="1" VerticalAlignment="Stretch" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="Auto"/>
+
+
+                </Grid.ColumnDefinitions>
+            <ListBox Grid.Column="0" VerticalAlignment="Stretch" ItemsSource="{Binding Employees}" SelectedItem="{Binding SelectedEmployee}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="{Binding Name}" Width="80"/>
+                            <Label Content="{Binding FirstName}" Width="80"/>
+                            <Label Content="{Binding AcountNumber}" Width="220"/>
+                            <TextBlock Text="{Binding Email}" VerticalAlignment="Center" Foreground="Blue"  TextDecorations="Underline"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                    </ListBox>
+            <StackPanel  Grid.Column="1" Orientation="Horizontal" FlowDirection="LeftToRight">
+                <Expander   VerticalAlignment="Stretch"    ExpandDirection="Left" HorizontalAlignment="Left"  >
+                    <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="250"/>
+                        <ColumnDefinition Width="250"/>
+
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Column="0" Grid.Row="0" Content="Imię" VerticalContentAlignment="Bottom" Padding="25,0,0,3"/>
+                        <TextBox Grid.Column="0" Grid.Row="1" Margin="25,0,0,0" Text="{Binding SelectedEmployee.Name}" VerticalContentAlignment="Center" />
+                    <Label Grid.Column="1" Grid.Row="0" Content="Nazwisko" VerticalContentAlignment="Bottom" Padding="15,0,0,3"/>
+                        <TextBox Grid.Column="1" Grid.Row="1" Margin="15,0,0,0" Text="{Binding SelectedEmployee.FirstName}" VerticalContentAlignment="Center"/>
+                    <Label Grid.Column="0" Grid.Row="2" Content="Adres e-mail" VerticalContentAlignment="Bottom" Padding="25,0,0,3"/>
+                        <TextBox Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Margin="25,0,0,0" Text="{Binding SelectedEmployee.Email}" VerticalContentAlignment="Center"/>
+                    <Label Grid.Column="0" Grid.Row="4" Content="Nr konta" VerticalContentAlignment="Bottom" Padding="25,0,0,3" />
+                        <TextBox Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2" Margin="25,0,0,0"  Text="{Binding SelectedEmployee.AcountNumber}" VerticalContentAlignment="Center"/>
+                </Grid>
+                </Expander>
+            </StackPanel>
+
+        </Grid>
+
+    </Grid>
+
+
+</UserControl>

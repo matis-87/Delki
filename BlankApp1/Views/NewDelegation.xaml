@@ -1,0 +1,34 @@
+﻿<Window x:Class="Regions.Views.NewDelegation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:prism="http://prismlibrary.com/"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+        xmlns:wb="clr-namespace:Regions.Controls" 
+        xmlns:viewmodels="clr-namespace:Regions.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        Title="{Binding Title}" Height="350" Width="525">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition  Height="50"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Button Grid.Row="0" Content="Dodaj" Command="{Binding CommandName}"/>
+        <ComboBox  ItemsSource="{Binding Projects}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate >
+                    <Grid>
+                        <Label Content="{Binding ProjectName}"/>
+                    </Grid>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <DockPanel Grid.Row="2" >
+
+    </DockPanel>
+        
+    </Grid>
+
+</Window>
